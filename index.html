@@ -11,35 +11,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg-1:#0f0c29;--bg-2:#302b63;--bg-3:#24243e;
-    --text:#e0e0e0;--text-dim:rgba(255,255,255,0.4);
-    --accent:#764ba2;--accent-2:#667eea;
-    --card-bg:rgba(255,255,255,0.06);--card-border:rgba(255,255,255,0.08);
-  }
-  .theme-rain {
-    --bg-1:#1a1a2e;--bg-2:#16213e;--bg-3:#0f3460;
-    --text:#aed6f1;--text-dim:rgba(174,214,241,0.5);
-    --accent:#2980b9;--accent-2:#3498db;
-    --card-bg:rgba(15,52,96,0.9);--card-border:rgba(174,214,241,0.1);
-  }
-  .theme-clear {
-    --bg-1:#fdf6e3;--bg-2:#fceabb;--bg-3:#f8b500;
-    --text:#3e2723;--text-dim:rgba(93,64,55,0.5);
-    --accent:#f39c12;--accent-2:#e67e22;
-    --card-bg:rgba(255,248,225,0.95);--card-border:rgba(255,220,100,0.3);
-  }
+  :root{--bg-1:#0f0c29;--bg-2:#302b63;--bg-3:#24243e;--text:#e0e0e0;--text-dim:rgba(255,255,255,0.4);--accent:#764ba2;--accent-2:#667eea;--card-bg:rgba(255,255,255,0.06);--card-border:rgba(255,255,255,0.08)}
+  .theme-rain{--bg-1:#1a1a2e;--bg-2:#16213e;--bg-3:#0f3460;--text:#aed6f1;--text-dim:rgba(174,214,241,0.5);--accent:#2980b9;--accent-2:#3498db;--card-bg:rgba(15,52,96,0.9);--card-border:rgba(174,214,241,0.1)}
+  .theme-clear{--bg-1:#fdf6e3;--bg-2:#fceabb;--bg-3:#f8b500;--text:#3e2723;--text-dim:rgba(93,64,55,0.5);--accent:#f39c12;--accent-2:#e67e22;--card-bg:rgba(255,248,225,0.95);--card-border:rgba(255,220,100,0.3)}
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  body{
-    font-family:'Noto Sans SC',-apple-system,sans-serif;
-    min-height:100vh;min-height:100dvh;
-    background:linear-gradient(160deg,var(--bg-1) 0%,var(--bg-2) 40%,var(--bg-3) 100%);
-    display:flex;flex-direction:column;align-items:center;
-    padding:24px 16px;
-    padding-top:max(24px,env(safe-area-inset-top));
-    padding-bottom:max(24px,env(safe-area-inset-bottom));
-    transition:background 0.8s ease;position:relative;overflow-x:hidden;
-  }
+  body{font-family:'Noto Sans SC',-apple-system,sans-serif;min-height:100vh;min-height:100dvh;background:linear-gradient(160deg,var(--bg-1) 0%,var(--bg-2) 40%,var(--bg-3) 100%);display:flex;flex-direction:column;align-items:center;padding:24px 16px;padding-top:max(24px,env(safe-area-inset-top));padding-bottom:max(24px,env(safe-area-inset-bottom));transition:background 0.8s ease;position:relative;overflow-x:hidden}
   .raindrops{position:fixed;inset:0;pointer-events:none;z-index:0;display:none}
   .theme-rain .raindrops{display:block}
   .raindrop{position:absolute;top:-10px;background:linear-gradient(to bottom,transparent,rgba(174,214,241,0.4));border-radius:50%;animation:rainfall linear infinite}
@@ -52,81 +28,46 @@
   @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
   @keyframes shake{0%,100%{transform:rotate(0deg)}25%{transform:rotate(-5deg)}75%{transform:rotate(5deg)}}
   @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
   .hero-icon{font-size:48px;margin-bottom:8px;animation:bounce 3s ease-in-out infinite}
   .theme-rain .hero-icon{animation:shake 2s ease-in-out infinite}
   h1{font-size:26px;font-weight:900;color:var(--text);letter-spacing:2px;line-height:1.3}
   .subtitle{font-size:12px;color:var(--text-dim);font-weight:300;letter-spacing:3px;margin-top:4px}
-
   .action-area{width:100%;max-width:380px;margin:24px 0 16px;animation:slideUp 0.6s ease 0.2s both}
   .btn-row{display:flex;gap:8px}
-  .btn{
-    flex:1;padding:14px 12px;font-size:14px;border:none;border-radius:14px;cursor:pointer;
-    color:#fff;font-weight:700;font-family:inherit;
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s;
-    display:flex;align-items:center;justify-content:center;gap:8px;
-  }
-  .btn:active{transform:scale(0.96)}
-  .btn:disabled{opacity:0.5}
+  .btn{flex:1;padding:14px 12px;font-size:14px;border:none;border-radius:14px;cursor:pointer;color:#fff;font-weight:700;font-family:inherit;box-shadow:0 4px 15px rgba(0,0,0,0.2);transition:all 0.3s;display:flex;align-items:center;justify-content:center;gap:8px}
+  .btn:active{transform:scale(0.96)}.btn:disabled{opacity:0.5}
   .btn-ip{background:linear-gradient(135deg,#00b894,#00cec9)}
   .btn-gps{background:linear-gradient(135deg,#667eea,#764ba2)}
   .btn-gps.locating svg{animation:spin 1s linear infinite}
-
   .status-bar{text-align:center;margin-top:10px;font-size:12px;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:5px;min-height:20px;line-height:1.5}
   .loc-dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
-  .loc-dot.ok{background:#00b894;box-shadow:0 0 6px rgba(0,184,148,0.5)}
-  .loc-dot.err{background:#e74c3c}
-  .loc-dot.loading{background:#f39c12;animation:fadeIn 0.5s ease infinite alternate}
-
+  .loc-dot.ok{background:#00b894;box-shadow:0 0 6px rgba(0,184,148,0.5)}.loc-dot.err{background:#e74c3c}.loc-dot.loading{background:#f39c12;animation:fadeIn 0.5s ease infinite alternate}
   .divider{display:flex;align-items:center;gap:10px;margin:14px 0;width:100%;max-width:380px;color:var(--text-dim);font-size:12px}
   .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--card-border)}
-
   .coord-box{display:flex;gap:8px;width:100%;max-width:380px}
-  .coord-box input{
-    flex:1;padding:12px 14px;font-size:14px;border:1px solid var(--card-border);border-radius:12px;
-    background:var(--card-bg);color:var(--text);outline:none;font-family:inherit;
-    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-width:0;
-  }
+  .coord-box input{flex:1;padding:12px 14px;font-size:14px;border:1px solid var(--card-border);border-radius:12px;background:var(--card-bg);color:var(--text);outline:none;font-family:inherit;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-width:0}
   .coord-box input:focus{border-color:var(--accent)}
   .coord-box input::placeholder{color:var(--text-dim);font-size:12px}
   .theme-clear .coord-box input{background:rgba(255,255,255,0.7);color:#3e2723}
-  .coord-box button{
-    padding:12px 16px;font-size:14px;border:none;border-radius:12px;cursor:pointer;
-    background:linear-gradient(135deg,var(--accent-2),var(--accent));
-    color:#fff;font-weight:700;font-family:inherit;white-space:nowrap;flex-shrink:0;
-  }
+  .coord-box button{padding:12px 16px;font-size:14px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--accent-2),var(--accent));color:#fff;font-weight:700;font-family:inherit;white-space:nowrap;flex-shrink:0}
   .coord-tip{font-size:11px;color:var(--text-dim);opacity:0.7;text-align:center;margin-top:8px;line-height:1.6}
-
-  .card{
-    position:relative;background:var(--card-bg);border-radius:20px;padding:24px;
-    width:100%;max-width:380px;border:1px solid var(--card-border);
-    box-shadow:0 16px 48px rgba(0,0,0,0.25);animation:slideUp 0.5s ease;
-    overflow:hidden;z-index:1;margin-bottom:14px;
-  }
+  .card{position:relative;background:var(--card-bg);border-radius:20px;padding:24px;width:100%;max-width:380px;border:1px solid var(--card-border);box-shadow:0 16px 48px rgba(0,0,0,0.25);animation:slideUp 0.5s ease;overflow:hidden;z-index:1;margin-bottom:14px}
   .theme-clear .card{box-shadow:0 16px 48px rgba(0,0,0,0.08)}
-
   .location-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
   .city-name{font-size:18px;font-weight:700;color:var(--text)}
   .coords-label{font-size:10px;color:var(--text-dim);opacity:0.6;font-weight:300;margin-top:2px}
   .loc-method{display:inline-block;padding:1px 6px;border-radius:4px;font-size:9px;font-weight:700;margin-left:4px}
-  .loc-method.ip{background:rgba(243,156,18,0.2);color:#f39c12}
-  .loc-method.gps{background:rgba(0,184,148,0.2);color:#00b894}
-  .loc-method.manual{background:rgba(102,126,234,0.2);color:#667eea}
-
+  .loc-method.ip{background:rgba(243,156,18,0.2);color:#f39c12}.loc-method.gps{background:rgba(0,184,148,0.2);color:#00b894}.loc-method.manual{background:rgba(102,126,234,0.2);color:#667eea}
   .temp{font-size:52px;font-weight:900;line-height:1;margin:10px 0 4px;letter-spacing:-2px}
-  .theme-rain .temp{color:#aed6f1}
-  .theme-clear .temp{color:#e67e22}
+  .theme-rain .temp{color:#aed6f1}.theme-clear .temp{color:#e67e22}
   .details{font-size:12px;color:var(--text-dim);margin-bottom:16px;line-height:1.6}
-
   .alert{border-radius:14px;padding:16px;margin-bottom:16px}
   .alert-rain{background:linear-gradient(135deg,rgba(231,76,60,0.15),rgba(192,57,43,0.1));border:1px solid rgba(231,76,60,0.2)}
   .alert-clear{background:linear-gradient(135deg,rgba(39,174,96,0.12),rgba(46,204,113,0.08));border:1px solid rgba(39,174,96,0.15)}
   .alert-title{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700}
-  .alert-rain .alert-title{color:#e74c3c}
-  .alert-clear .alert-title{color:#27ae60}
+  .alert-rain .alert-title{color:#e74c3c}.alert-clear .alert-title{color:#27ae60}
   .alert-sub{font-size:13px;margin-top:6px;line-height:1.6;color:var(--text-dim)}
   .alert-keypoint{font-size:14px;margin-top:8px;color:var(--text);font-weight:500;line-height:1.5}
-
   .rain-chart-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px}
   .rain-chart{position:relative;height:80px;width:100%;background:rgba(0,0,0,0.1);border-radius:10px;overflow:hidden;margin-bottom:6px}
   .theme-clear .rain-chart{background:rgba(0,0,0,0.04)}
@@ -134,7 +75,6 @@
   .rain-bar.heavy{background:linear-gradient(to top,rgba(231,76,60,0.7),rgba(231,76,60,0.3))}
   .rain-bar.moderate{background:linear-gradient(to top,rgba(243,156,18,0.7),rgba(243,156,18,0.3))}
   .rain-time-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text-dim)}
-
   .section-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px}
   .hourly{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
   .hourly::-webkit-scrollbar{display:none}
@@ -143,14 +83,12 @@
   .hour-label{font-size:11px;font-weight:500;color:var(--text-dim);margin-bottom:5px}
   .hour-emoji{font-size:18px;margin-bottom:3px}
   .hour-temp{font-size:13px;font-weight:700;color:var(--text)}
-
   .error-msg{color:#e74c3c;font-size:14px;background:rgba(231,76,60,0.1);padding:12px 18px;border-radius:10px;margin-bottom:16px;text-align:center;max-width:380px;width:100%}
   .hint{text-align:center;color:var(--text-dim);font-size:12px;margin-top:8px;line-height:1.8;animation:fadeIn 1s ease 0.6s both}
   .powered{text-align:center;font-size:10px;color:var(--text-dim);opacity:0.4;margin-top:16px}
 </style>
 </head>
 <body>
-
 <div class="raindrops" id="raindrops"></div>
 <div class="sun-glow"></div>
 
@@ -174,121 +112,104 @@
 </div>
 
 <div class="divider">或粘贴精确坐标</div>
-
 <div class="coord-box">
-  <input type="text" id="coordInput" placeholder="经度,纬度（如 116.3913,39.9075）" autocomplete="off">
+  <input type="text" id="coordInput" placeholder="经度,纬度（如 104.07,30.67）" autocomplete="off">
   <button onclick="manualSearch()">查询</button>
 </div>
-<div class="coord-tip">在高德/百度地图长按你的位置 → 复制坐标 → 粘贴到这里<br>这样精度最高，可以精确到你所在的街道</div>
+<div class="coord-tip">在高德/百度地图长按你的位置 → 复制坐标 → 粘贴到这里</div>
 
 <div id="errorBox" style="margin-top:16px"></div>
 <div id="resultArea" style="margin-top:16px"></div>
-
 <div class="powered">数据来自彩云天气 · 1km分辨率 · 分钟级降雨预报</div>
 
 <script>
-const API_TOKEN = 'DpS87YWOT1lMMBPB';
-let lastMethod = '';
+const API_TOKEN='DpS87YWOT1lMMBPB';
 
-const SKYCON_MAP = {
-  CLEAR_DAY:'☀️',CLEAR_NIGHT:'🌙',PARTLY_CLOUDY_DAY:'⛅',PARTLY_CLOUDY_NIGHT:'☁️',
-  CLOUDY:'☁️',LIGHT_HAZE:'🌫️',MODERATE_HAZE:'🌫️',HEAVY_HAZE:'🌫️',
-  LIGHT_RAIN:'🌧️',MODERATE_RAIN:'🌧️',HEAVY_RAIN:'🌧️',STORM_RAIN:'⛈️',
-  FOG:'🌫️',LIGHT_SNOW:'❄️',MODERATE_SNOW:'❄️',HEAVY_SNOW:'❄️',STORM_SNOW:'❄️',
-  DUST:'🌪️',SAND:'🌪️',WIND:'💨'
-};
-const SKYCON_CN = {
-  CLEAR_DAY:'晴',CLEAR_NIGHT:'晴',PARTLY_CLOUDY_DAY:'多云',PARTLY_CLOUDY_NIGHT:'多云',
-  CLOUDY:'阴',LIGHT_HAZE:'轻度雾霾',MODERATE_HAZE:'中度雾霾',HEAVY_HAZE:'重度雾霾',
-  LIGHT_RAIN:'小雨',MODERATE_RAIN:'中雨',HEAVY_RAIN:'大雨',STORM_RAIN:'暴雨',
-  FOG:'雾',LIGHT_SNOW:'小雪',MODERATE_SNOW:'中雪',HEAVY_SNOW:'大雪',STORM_SNOW:'暴雪',
-  DUST:'浮尘',SAND:'沙尘',WIND:'大风'
-};
+const SKYCON_MAP={CLEAR_DAY:'☀️',CLEAR_NIGHT:'🌙',PARTLY_CLOUDY_DAY:'⛅',PARTLY_CLOUDY_NIGHT:'☁️',CLOUDY:'☁️',LIGHT_HAZE:'🌫️',MODERATE_HAZE:'🌫️',HEAVY_HAZE:'🌫️',LIGHT_RAIN:'🌧️',MODERATE_RAIN:'🌧️',HEAVY_RAIN:'🌧️',STORM_RAIN:'⛈️',FOG:'🌫️',LIGHT_SNOW:'❄️',MODERATE_SNOW:'❄️',HEAVY_SNOW:'❄️',STORM_SNOW:'❄️',DUST:'🌪️',SAND:'🌪️',WIND:'💨'};
+const SKYCON_CN={CLEAR_DAY:'晴',CLEAR_NIGHT:'晴',PARTLY_CLOUDY_DAY:'多云',PARTLY_CLOUDY_NIGHT:'多云',CLOUDY:'阴',LIGHT_HAZE:'轻度雾霾',MODERATE_HAZE:'中度雾霾',HEAVY_HAZE:'重度雾霾',LIGHT_RAIN:'小雨',MODERATE_RAIN:'中雨',HEAVY_RAIN:'大雨',STORM_RAIN:'暴雨',FOG:'雾',LIGHT_SNOW:'小雪',MODERATE_SNOW:'中雪',HEAVY_SNOW:'大雪',STORM_SNOW:'暴雪',DUST:'浮尘',SAND:'沙尘',WIND:'大风'};
 function isRainSkycon(s){return s&&s.includes('RAIN')}
 function getEmoji(s){return SKYCON_MAP[s]||'🌤️'}
 function getCN(s){return SKYCON_CN[s]||'未知'}
 
-function createRaindrops(){
-  const c=document.getElementById('raindrops');c.innerHTML='';
-  for(let i=0;i<35;i++){const d=document.createElement('div');d.className='raindrop';const s=1+Math.random()*2;
-  d.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s*8}px;animation-duration:${0.6+Math.random()*0.5}s;animation-delay:${Math.random()*2}s;`;c.appendChild(d);}
-}
+function createRaindrops(){const c=document.getElementById('raindrops');c.innerHTML='';for(let i=0;i<35;i++){const d=document.createElement('div');d.className='raindrop';const s=1+Math.random()*2;d.style.cssText=`left:${Math.random()*100}%;width:${s}px;height:${s*8}px;animation-duration:${0.6+Math.random()*0.5}s;animation-delay:${Math.random()*2}s;`;c.appendChild(d)}}
 createRaindrops();
 
-function setTheme(t){
-  document.body.classList.remove('theme-rain','theme-clear');
-  if(t)document.body.classList.add(t);
-  document.querySelector('meta[name="theme-color"]').content=t==='theme-rain'?'#1a1a2e':t==='theme-clear'?'#fdf6e3':'#0f0c29';
-}
+function setTheme(t){document.body.classList.remove('theme-rain','theme-clear');if(t)document.body.classList.add(t);document.querySelector('meta[name="theme-color"]').content=t==='theme-rain'?'#1a1a2e':t==='theme-clear'?'#fdf6e3':'#0f0c29'}
+function showStatus(type,msg){document.getElementById('statusBar').innerHTML=`<span class="loc-dot ${type==='ok'?'ok':type==='err'?'err':'loading'}"></span> ${msg}`}
+function showError(msg){document.getElementById('errorBox').innerHTML=`<div class="error-msg">${msg}</div>`;document.getElementById('resultArea').innerHTML=''}
 
-function showStatus(type,msg){
-  const dot=type==='ok'?'ok':type==='err'?'err':'loading';
-  document.getElementById('statusBar').innerHTML=`<span class="loc-dot ${dot}"></span> ${msg}`;
-}
-
-function showError(msg){
-  document.getElementById('errorBox').innerHTML=`<div class="error-msg">${msg}</div>`;
-  document.getElementById('resultArea').innerHTML='';
+// ===== JSONP 请求（绕过跨域限制）=====
+function jsonpFetch(url){
+  return new Promise((resolve,reject)=>{
+    const cbName='_cb_'+Math.random().toString(36).substr(2,8);
+    const timeout=setTimeout(()=>{cleanup();reject(new Error('请求超时'))},15000);
+    function cleanup(){
+      delete window[cbName];
+      const el=document.getElementById(cbName);
+      if(el)el.remove();
+      clearTimeout(timeout);
+    }
+    window[cbName]=function(data){
+      cleanup();
+      resolve(data);
+    };
+    const script=document.createElement('script');
+    script.id=cbName;
+    script.src=url+(url.includes('?')?'&':'?')+'callback='+cbName;
+    script.onerror=function(){cleanup();reject(new Error('网络请求失败'))};
+    document.head.appendChild(script);
+  });
 }
 
 // ===== IP 定位 =====
 async function ipLocate(){
   const btn=document.getElementById('ipBtn');
-  btn.disabled=true;
-  document.getElementById('ipBtnText').textContent='定位中...';
+  btn.disabled=true;document.getElementById('ipBtnText').textContent='定位中...';
   showStatus('loading','正在通过网络定位...');
   document.getElementById('errorBox').innerHTML='';
-
   try{
-    // 尝试多个 IP 定位服务
     let lng,lat,city;
+    // 尝试多个 HTTPS IP 定位服务
     try{
-      const res=await fetch('http://ip-api.com/json/?lang=zh-CN');
+      const res=await fetch('https://ipapi.co/json/');
       const data=await res.json();
-      if(data.status==='success'){lng=data.lon;lat=data.lat;city=data.city;}
-      else throw 0;
+      lng=data.longitude;lat=data.latitude;city=data.city;
     }catch{
-      // 备用服务
-      const res2=await fetch('https://ipapi.co/json/');
-      const data2=await res2.json();
-      lng=data2.longitude;lat=data2.latitude;city=data2.city;
+      try{
+        const res2=await fetch('https://ip.useragentinfo.com/json');
+        const data2=await res2.json();
+        lng=parseFloat(data2.longitude);lat=parseFloat(data2.latitude);city=data2.city;
+      }catch{
+        throw new Error('所有定位服务均不可用');
+      }
     }
-
-    if(!lng||!lat) throw new Error('无法获取位置');
-    lastMethod='ip';
+    if(!lng||!lat)throw new Error('无法获取位置');
     showStatus('ok',`已定位到 ${city||''} (${lng.toFixed(2)}, ${lat.toFixed(2)}) · 城区级精度`);
     fetchWeather(lng,lat,'ip',city);
   }catch(e){
-    showStatus('err','网络定位失败，请手动输入坐标');
+    showStatus('err','网络定位失败：'+e.message);
   }finally{
-    btn.disabled=false;
-    document.getElementById('ipBtnText').textContent='自动定位';
+    btn.disabled=false;document.getElementById('ipBtnText').textContent='自动定位';
   }
 }
 
 // ===== GPS 定位 =====
 function gpsLocate(){
-  if(!navigator.geolocation){showStatus('err','浏览器不支持GPS定位，请用自动定位或手动输入');return;}
+  if(!navigator.geolocation){showStatus('err','浏览器不支持GPS');return}
   const btn=document.getElementById('gpsBtn');
   btn.classList.add('locating');btn.disabled=true;
-  showStatus('loading','正在请求GPS权限...');
-
+  showStatus('loading','正在请求GPS...');
   navigator.geolocation.getCurrentPosition(
     pos=>{
       const lat=pos.coords.latitude,lng=pos.coords.longitude;
-      lastMethod='gps';
       showStatus('ok',`GPS定位成功 (${lng.toFixed(4)}, ${lat.toFixed(4)}) 精度${Math.round(pos.coords.accuracy)}m`);
       btn.classList.remove('locating');btn.disabled=false;
       fetchWeather(lng,lat,'gps');
     },
     err=>{
       btn.classList.remove('locating');btn.disabled=false;
-      const msgs={
-        1:'GPS权限被拒绝。本地文件无法使用GPS，请用「自动定位」或手动输入坐标',
-        2:'无法获取GPS信号',
-        3:'GPS超时，请重试'
-      };
-      showStatus('err',msgs[err.code]||'GPS定位失败，请用自动定位或手动输入');
+      const msgs={1:'GPS权限被拒绝，请用自动定位或手动输入',2:'无法获取GPS信号',3:'GPS超时，请重试'};
+      showStatus('err',msgs[err.code]||'GPS失败');
     },
     {enableHighAccuracy:true,timeout:15000,maximumAge:60000}
   );
@@ -296,36 +217,26 @@ function gpsLocate(){
 
 // ===== 手动输入 =====
 document.getElementById('coordInput').addEventListener('keydown',e=>{if(e.key==='Enter')manualSearch()});
-
 function manualSearch(){
-  let val=document.getElementById('coordInput').value.trim();
-  // 支持多种格式：逗号分隔、空格分隔
-  val=val.replace(/\s+/g,',').replace(/，/g,',');
+  let val=document.getElementById('coordInput').value.trim().replace(/\s+/g,',').replace(/，/g,',');
   const parts=val.split(',').filter(s=>s);
-  if(parts.length!==2){showError('格式：经度,纬度（如 116.3913,39.9075）');return;}
+  if(parts.length!==2){showError('格式：经度,纬度（如 104.07,30.67）');return}
   const a=parseFloat(parts[0]),b=parseFloat(parts[1]);
-  if(isNaN(a)||isNaN(b)){showError('请输入有效数字');return;}
-  // 智能判断经纬度顺序（中国经度 73-135，纬度 18-53）
+  if(isNaN(a)||isNaN(b)){showError('请输入有效数字');return}
   let lng,lat;
-  if(a>70&&a<140){lng=a;lat=b;}
-  else if(b>70&&b<140){lng=b;lat=a;}
-  else{lng=a;lat=b;}
-  lastMethod='manual';
-  showStatus('ok',`坐标 (${lng.toFixed(4)}, ${lat.toFixed(4)}) · 精确定位`);
+  if(a>70&&a<140){lng=a;lat=b}else if(b>70&&b<140){lng=b;lat=a}else{lng=a;lat=b}
+  showStatus('ok',`坐标 (${lng.toFixed(4)}, ${lat.toFixed(4)})`);
   fetchWeather(lng,lat,'manual');
 }
 
-// ===== 获取天气 =====
+// ===== 获取天气（JSONP方式）=====
 async function fetchWeather(lng,lat,method,cityName){
   document.getElementById('errorBox').innerHTML='';
   document.getElementById('resultArea').innerHTML='<div style="text-align:center;color:var(--text-dim);padding:20px;animation:fadeIn 0.3s ease">🔄 加载天气数据...</div>';
   const hint=document.querySelector('.hint');if(hint)hint.style.display='none';
-
   try{
-    const url=`https://api.caiyunapp.com/v2.6/${API_TOKEN}/${lng.toFixed(4)},${lat.toFixed(4)}/weather?alert=true&dailysteps=1&hourlysteps=24&unit=metric:v2`;
-    const res=await fetch(url);
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    const data=await res.json();
+    const url=`https://api.caiyunapp.com/v2.6/${API_TOKEN}/${lng.toFixed(4)},${lat.toFixed(4)}/weather.jsonp?alert=true&dailysteps=1&hourlysteps=24&unit=metric:v2`;
+    const data=await jsonpFetch(url);
     if(data.status!=='ok')throw new Error(data.status);
     renderWeather(data,lng,lat,method,cityName);
   }catch(e){
@@ -340,7 +251,6 @@ function renderWeather(data,lng,lat,method,cityName){
   const minutely=data.result.minutely;
   const hourly=data.result.hourly;
   const keypoint=data.result.forecast_keypoint||'';
-
   const skycon=rt.skycon;
   const hasRain=isRainSkycon(skycon)||(minutely&&minutely.precipitation_2h&&minutely.precipitation_2h.some(v=>v>0.08));
   const isRaining=rt.precipitation&&rt.precipitation.local&&rt.precipitation.local.intensity>0.08;
@@ -349,10 +259,7 @@ function renderWeather(data,lng,lat,method,cityName){
   document.getElementById('heroIcon').textContent=hasRain?'☂️':'☀️';
   document.getElementById('heroTitle').textContent=hasRain?'记得带伞！':'不用带伞';
 
-  const methodLabel=method==='gps'?'<span class="loc-method gps">GPS</span>':
-    method==='ip'?'<span class="loc-method ip">IP定位</span>':
-    '<span class="loc-method manual">手动</span>';
-
+  const methodLabel=method==='gps'?'<span class="loc-method gps">GPS</span>':method==='ip'?'<span class="loc-method ip">IP定位</span>':'<span class="loc-method manual">手动</span>';
   let html='';
 
   // 主卡片
@@ -388,8 +295,7 @@ function renderWeather(data,lng,lat,method,cityName){
       <div class="rain-chart">`;
     const barW=100/precip2h.length;
     for(let i=0;i<precip2h.length;i++){
-      const v=precip2h[i];
-      const h=Math.max(v/maxP*100,v>0.08?3:0);
+      const v=precip2h[i],h=Math.max(v/maxP*100,v>0.08?3:0);
       const cls=v>10?'heavy':v>3?'moderate':'';
       html+=`<div class="rain-bar ${cls}" style="left:${i*barW}%;width:${Math.max(barW-0.2,0.5)}%;height:${h}%"></div>`;
     }
@@ -420,18 +326,33 @@ function renderWeather(data,lng,lat,method,cityName){
     html+=`</div></div>`;
   }
 
-  // IP精度提示
   if(method==='ip'){
     html+=`<div style="text-align:center;font-size:11px;color:var(--text-dim);opacity:0.6;margin-top:4px;line-height:1.6">
-      ⚠️ IP定位精度为城区级别<br>如需更精准的降雨预报，请从地图APP复制你的坐标粘贴查询
+      ⚠️ IP定位精度为城区级别，如需更精准请用GPS定位或粘贴坐标
     </div>`;
   }
 
   document.getElementById('resultArea').innerHTML=html;
 }
 
-// 页面加载自动 IP 定位
-window.addEventListener('load',()=>{setTimeout(ipLocate,400)});
+// 自动定位
+window.addEventListener('load',()=>{
+  // 优先尝试GPS（HTTPS环境下），失败则IP定位
+  if(location.protocol==='https:' && navigator.geolocation){
+    showStatus('loading','正在尝试GPS定位...');
+    navigator.geolocation.getCurrentPosition(
+      pos=>{
+        const lat=pos.coords.latitude,lng=pos.coords.longitude;
+        showStatus('ok',`GPS定位成功 (${lng.toFixed(4)}, ${lat.toFixed(4)}) 精度${Math.round(pos.coords.accuracy)}m`);
+        fetchWeather(lng,lat,'gps');
+      },
+      ()=>{ipLocate()},
+      {enableHighAccuracy:true,timeout:8000,maximumAge:60000}
+    );
+  }else{
+    setTimeout(ipLocate,400);
+  }
+});
 </script>
 </body>
 </html>
